@@ -14,7 +14,8 @@ Cloudflare Workers **무료 플랜** — 개인 사이트 충분.
 
 | Secret | 값 |
 |--------|-----|
-| `CLOUDFLARE_API_TOKEN` | [Cloudflare API 토큰](https://dash.cloudflare.com/profile/api-tokens) · Edit Cloudflare Workers |
+| `CLOUDFLARE_API_TOKEN` | Cloudflare API 토큰 |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 대시보드 오른쪽 **Account ID** |
 | `AISSTREAM_API_KEY` | AISstream API 키 |
 
 `main`에 push하면 Worker가 자동 배포됩니다.
