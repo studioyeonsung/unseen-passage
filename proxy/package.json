@@ -1,0 +1,8 @@
+{
+  "name": "unseen-passage-ais-proxy",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

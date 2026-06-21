@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div id="map"></div>
+    <aside id="ais-panel" class="ais-panel">
+      <p class="ais-panel__title">실시간 선박 (AIS)</p>
+      <p id="ais-status" class="ais-panel__status">연결 준비 중...</p>
+      <p class="ais-panel__count">표시: <span id="ais-count">0</span>척</p>
+      <p class="ais-panel__count ais-panel__count--rotterdam">
+        로테르담행: <span id="ais-rotterdam-count">0</span>척
+      </p>
+      <p class="ais-panel__note">
+        초록 화살표 = 목적지 ROTTERDAM · 빨간 = 그 외 · 목적지는 AIS에
+        있을 때만 표시됩니다.
+      </p>
+    </aside>
+
+    <script src="js/photos.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/ais.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
