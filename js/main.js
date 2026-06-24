@@ -1,10 +1,7 @@
-function getPhotoBounds() {
+function getInitialMapBounds() {
   const bounds = new google.maps.LatLngBounds();
-
-  PHOTOS.forEach((photo) => {
-    bounds.extend({ lat: photo.lat, lng: photo.lng });
-  });
-
+  bounds.extend({ lat: 35.228, lng: 128.681 }); // Changwon
+  bounds.extend({ lat: 35.062, lng: 128.814 }); // Busan New Port
   return bounds;
 }
 
@@ -137,13 +134,12 @@ function initMap() {
     fullscreenControl: true,
   });
 
-  const bounds = getPhotoBounds();
-  bounds.union(getAisRegionBounds());
+  const bounds = getInitialMapBounds();
   map.fitBounds(bounds, 48);
 
   google.maps.event.addListenerOnce(map, "bounds_changed", () => {
-    if (map.getZoom() > 14) {
-      map.setZoom(14);
+    if (map.getZoom() > 12) {
+      map.setZoom(12);
     }
   });
 
