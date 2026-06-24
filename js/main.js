@@ -8,11 +8,20 @@ function getPhotoBounds() {
   return bounds;
 }
 
+const PHOTOGRAPHER_MARKER_COLORS = {
+  Yeon: "#1a3a8f",
+  Nari: "#f5c518",
+};
+
+function getPhotographerMarkerColor(photographer) {
+  return PHOTOGRAPHER_MARKER_COLORS[photographer] || "#1a3a8f";
+}
+
 function groupPhotosByLocation(photos) {
   const groups = new Map();
 
   photos.forEach((photo) => {
-    const key = `${photo.lat},${photo.lng}`;
+    const key = `${photo.lat},${photo.lng},${photo.photographer || ""}`;
     if (!groups.has(key)) {
       groups.set(key, []);
     }
@@ -65,6 +74,7 @@ function createPhotoTooltip(map) {
         (photo) => `
           <div class="photo-tooltip__item">
             <img class="photo-tooltip__image" src="${photo.image}" alt="${photo.file}" loading="lazy" />
+            ${photo.photographer ? `<p class="photo-tooltip__photographer">${photo.photographer}</p>` : ""}
             <p class="photo-tooltip__time">${photo.datetime}</p>
           </div>
         `
@@ -92,14 +102,15 @@ function createPhotoMarkers(map, tooltip) {
 
   groups.forEach((photos) => {
     const position = { lat: photos[0].lat, lng: photos[0].lng };
+    const markerColor = getPhotographerMarkerColor(photos[0].photographer);
     const marker = new google.maps.Marker({
       position,
       map,
-      title: photos.map((photo) => photo.datetime).join(", "),
+      title: photos.map((photo) => `${photo.photographer || ""} ${photo.datetime}`.trim()).join(", "),
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 7,
-        fillColor: "#1a3a8f",
+        fillColor: markerColor,
         fillOpacity: 1,
         strokeColor: "#ffffff",
         strokeWeight: 2,

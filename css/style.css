@@ -57,8 +57,16 @@ body {
   border-radius: 0.25rem;
 }
 
-.photo-tooltip__time {
+.photo-tooltip__photographer {
   margin: 0.35rem 0 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.photo-tooltip__time {
+  margin: 0.15rem 0 0;
   font-family: system-ui, sans-serif;
   font-size: 0.75rem;
   color: #666;
