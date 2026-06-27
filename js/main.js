@@ -15,6 +15,15 @@ function getPhotographerMarkerColor(photographer) {
   return PHOTOGRAPHER_MARKER_COLORS[photographer] || "#1a3a8f";
 }
 
+function getPhotoThumbUrl(photo) {
+  if (photo.thumb) {
+    return photo.thumb;
+  }
+  const file = photo.file || photo.image.split("/").pop();
+  const base = file.replace(/\.[^.]+$/i, "");
+  return `assets/photos/thumbs/${base}.jpg`;
+}
+
 function groupPhotosByLocation(photos) {
   const groups = new Map();
 
@@ -71,7 +80,7 @@ function createPhotoTooltip(map) {
       .map(
         (photo) => `
           <div class="photo-tooltip__item">
-            <img class="photo-tooltip__image" src="${photo.image}" alt="${photo.file}" loading="lazy" />
+            <img class="photo-tooltip__image" src="${getPhotoThumbUrl(photo)}" alt="${photo.file}" loading="lazy" />
             ${photo.photographer ? `<p class="photo-tooltip__photographer">${photo.photographer}</p>` : ""}
             <p class="photo-tooltip__time">${photo.datetime}</p>
           </div>
