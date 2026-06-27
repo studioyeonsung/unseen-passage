@@ -8,6 +8,7 @@ function getInitialMapBounds() {
 const PHOTOGRAPHER_MARKER_COLORS = {
   Yeon: "#1a3a8f",
   Nari: "#f5c518",
+  Sooncheon: "#22a559",
 };
 
 function getPhotographerMarkerColor(photographer) {
